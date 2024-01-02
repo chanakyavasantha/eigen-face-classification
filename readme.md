@@ -35,4 +35,3 @@ Depending on the scope of your project and the details you want to include, you 
 - **Contributing**: Guidelines for contributing to the project (if it's open for collaboration).
 - **License**: The license under which your project is released.
 
-Remember, a README file is essential for explaining the what, why, and how of your project, making it easier for others to understand and potentially contribute to your work.
