@@ -1,7 +1,3 @@
-Certainly! Below is a sample README text for your project. Feel free to modify it as per your project's specifics and additional details:
-
----
-
 # Celebrity Image Classifier Project
 
 ## Overview
