@@ -26,18 +26,50 @@ async def page1(q: Q):
     q.page['sidebar'].value = '#page1'
     clear_cards(q)  # When routing, drop all the cards except of the main ones (header, sidebar, meta).
 
-    for i in range(3):
-        add_card(q, f'info{i}', ui.tall_info_card(box='horizontal', name='', title='Speed',
-                                                  caption='The models are performant thanks to...', icon='SpeedHigh'))
     add_card(q, 'article', ui.tall_article_preview_card(
-        box=ui.box('vertical', height='600px'), title='How does magic work',
-        image='https://images.pexels.com/photos/624015/pexels-photo-624015.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        box=ui.box('vertical', height='1200px'), title='How does magic work',
+        image='https://www.passionspirits.com/media/catalog/category/Passion-Spirits---Celebrity-Brands---Banner-Desktop.jpg',
         content='''
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac sodales felis. Duis orci enim, iaculis at augue vel, mattis imperdiet ligula. Sed a placerat lacus, vitae viverra ante. Duis laoreet purus sit amet orci lacinia, non facilisis ipsum venenatis. Duis bibendum malesuada urna. Praesent vehicula tempor volutpat. In sem augue, blandit a tempus sit amet, tristique vehicula nisl. Duis molestie vel nisl a blandit. Nunc mollis ullamcorper elementum.
-Donec in erat augue. Nullam mollis ligula nec massa semper, laoreet pellentesque nulla ullamcorper. In ante ex, tristique et mollis id, facilisis non metus. Aliquam neque eros, semper id finibus eu, pellentesque ac magna. Aliquam convallis eros ut erat mollis, sit amet scelerisque ex pretium. Nulla sodales lacus a tellus molestie blandit. Praesent molestie elit viverra, congue purus vel, cursus sem. Donec malesuada libero ut nulla bibendum, in condimentum massa pretium. Aliquam erat volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer vel tincidunt purus, congue suscipit neque. Fusce eget lacus nibh. Sed vestibulum neque id erat accumsan, a faucibus leo malesuada. Curabitur varius ligula a velit aliquet tincidunt. Donec vehicula ligula sit amet nunc tempus, non fermentum odio rhoncus.
-Vestibulum condimentum consectetur aliquet. Phasellus mollis at nulla vel blandit. Praesent at ligula nulla. Curabitur enim tellus, congue id tempor at, malesuada sed augue. Nulla in justo in libero condimentum euismod. Integer aliquet, velit id convallis maximus, nisl dui porta velit, et pellentesque ligula lorem non nunc. Sed tincidunt purus non elit ultrices egestas quis eu mauris. Sed molestie vulputate enim, a vehicula nibh pulvinar sit amet. Nullam auctor sapien est, et aliquet dui congue ornare. Donec pulvinar scelerisque justo, nec scelerisque velit maximus eget. Ut ac lectus velit. Pellentesque bibendum ex sit amet cursus commodo. Fusce congue metus at elementum ultricies. Suspendisse non rhoncus risus. In hac habitasse platea dictumst.
+# Celebrity Image Classifier Project
+
+## Overview
+This project focuses on the classification of images of popular celebrities using various machine learning classifiers. It showcases the application of principal component analysis (PCA) for dimensionality reduction and the extraction of eigenfaces, which play a crucial role in image recognition tasks.
+
+## Dataset
+The dataset comprises images of 15 different celebrities, with 15 images per celebrity. These images were preprocessed to convert them into grayscale and resize them to a standard dimension, ensuring uniformity across the dataset.
+
+## Data Preprocessing
+1. **Grayscale Conversion**: All images were converted to grayscale to reduce complexity and focus on the essential features for facial recognition.
+2. **Resizing**: Images were resized to a uniform size to standardize the input for the machine learning models.
+
+## Feature Extraction
+- **Principal Component Analysis (PCA)**: PCA was employed for dimensionality reduction, reducing the computational load without significantly compromising the essential features of the images.
+- **Eigenfaces**: By applying PCA, eigenfaces for each celebrity were extracted. These eigenfaces represent the principal components of the image dataset.
+
+## Generating the Mean Eigenface
+A mean eigenface was computed to represent the average features of the faces in the entire dataset. This mean eigenface serves as a reference point for comparing individual eigenfaces.
+
+## Machine Learning Classifiers
+Multiple machine learning classifiers were utilized and compared to evaluate their effectiveness in accurately classifying the celebrity images. The performance of each classifier was assessed to determine the most efficient model for this task.
+
+## Conclusion
+This project illustrates the application of PCA in facial recognition and the effectiveness of different machine learning classifiers in image classification tasks. The comparison of various classifiers provides insights into their suitability for image-based machine learning projects.
+
+---
+
+### Additional Sections
+Depending on the scope of your project and the details you want to include, you might also consider adding the following sections to your README:
+
+- **Installation and Setup**: Instructions for setting up the project environment.
+- **Usage**: How to run the project or use the code.
+- **Results and Discussion**: A summary of the classification results and any interesting findings or challenges encountered.
+- **Contributing**: Guidelines for contributing to the project (if it's open for collaboration).
+- **License**: The license under which your project is released.
+
+Remember, a README file is essential for explaining the what, why, and how of your project, making it easier for others to understand and potentially contribute to your work.
         '''
     ))
+    
 
 
 @on('#page2')
@@ -187,22 +219,20 @@ async def init(q: Q) -> None:
         ])
     ])])
     q.page['sidebar'] = ui.nav_card(
-        box='sidebar', color='primary', title='My App', subtitle="Let's conquer the world!",
+        box='sidebar', color='primary', title='Eigen Face Classifier', subtitle="Recognize Your Fav Celebrity!",
         value=f'#{q.args["#"]}' if q.args['#'] else '#page1',
-        image='https://wave.h2o.ai/img/h2o-logo.svg', items=[
+        image='', items=[
             ui.nav_group('Menu', items=[
                 ui.nav_item(name='#page1', label='Home'),
                 ui.nav_item(name='#page2', label='Charts'),
                 ui.nav_item(name='#page3', label='Grid'),
-                ui.nav_item(name='#page4', label='Form'),
             ]),
         ])
     q.page['header'] = ui.header_card(
         box='header', title='', subtitle='',
-        secondary_items=[ui.textbox(name='search', icon='Search', width='400px', placeholder='Search...')],
         items=[
-            ui.persona(title='John Doe', subtitle='Developer', size='xs',
-                       image='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&h=750&w=1260'),
+            ui.persona(title='Chanakya Vasantha', subtitle='Data Scientist & Developer', size='xs',
+                       image='https://chanakyavasantha.github.io/Portfolio/assets/img/ME.jpeg'),
         ]
     )
     # If no active hash present, render page1.
