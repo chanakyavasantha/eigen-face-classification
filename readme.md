@@ -1,4 +1,5 @@
 # Celebrity Image Classifier Project
+![Alt text](image.png)
 
 ## Overview
 This project focuses on the classification of images of popular celebrities using various machine learning classifiers. It showcases the application of principal component analysis (PCA) for dimensionality reduction and the extraction of eigenfaces, which play a crucial role in image recognition tasks.
